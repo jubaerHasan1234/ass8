@@ -1,11 +1,12 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useConversationDelete } from "@/hooks/useConversationDelete";
 import { useConversationTitle } from "@/hooks/useConversationTitle";
 import { ArrowLeft, Edit, MoreHorizontal, Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import ConfirmationModal from "./ConfirmationModal";
+import Portal from "./Portal";
 
 export default function ChatHeader({
   conversationTitle,
@@ -64,7 +65,7 @@ export default function ChatHeader({
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           {/* Back button - only visible on mobile */}
-          <button 
+          <button
             onClick={handleBackClick}
             className="md:hidden p-1 -ml-2 mr-1 text-gray-500 hover:bg-gray-100 rounded-full transition-colors"
             aria-label="Go back"
@@ -128,13 +129,15 @@ export default function ChatHeader({
           )}
         </div>
       </div>
-      <ConfirmationModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onConfirm={handleConfirmDelete}
-        title="Delete Conversation"
-        message="Are you sure you want to delete this conversation? This action cannot be undone."
-      />
+      <Portal>
+        <ConfirmationModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          onConfirm={handleConfirmDelete}
+          title="Delete Conversation"
+          message="Are you sure you want to delete this conversation? This action cannot be undone."
+        />
+      </Portal>
     </div>
   );
 }

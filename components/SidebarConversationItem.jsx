@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useConversationDelete } from "../hooks/useConversationDelete";
 import { useConversationTitle } from "../hooks/useConversationTitle";
 import ConfirmationModal from "./ConfirmationModal";
-
+import Portal from "./Portal";
 export default function SidebarConversationItem({
   conversation,
   onEdit,
@@ -114,13 +114,15 @@ export default function SidebarConversationItem({
       )}
       {/* Confirmation Modal for Delete */}
       {isModalOpen && (
-        <ConfirmationModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          onConfirm={handleDelete}
-          title="Delete Conversation"
-          message="Are you sure you want to delete this conversation? This action cannot be undone."
-        />
+        <Portal>
+          <ConfirmationModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            onConfirm={handleDelete}
+            title="Delete Conversation"
+            message="Are you sure you want to delete this conversation? This action cannot be undone."
+          />
+        </Portal>
       )}
     </div>
   );

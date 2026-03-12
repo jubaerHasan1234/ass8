@@ -1,8 +1,7 @@
 "use client";
 
-import logo from "@/public/logo.svg"; // Your logo path
+// import logo from "@/public/logo.svg"; // Your logo path
 import { MessageCircle } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -42,7 +41,7 @@ export default function Sidebar() {
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-white rounded-full"></div>
           <div className="w-2 h-2 bg-white rounded-full"></div>
-          <span className="font-semibold text-sm">CognitionX</span>
+          <span className="font-semibold text-sm">AI Chatbot</span>
         </div>
       </div>
 
@@ -117,14 +116,15 @@ export default function Sidebar() {
           <span className="text-xs text-gray-400">Powered by</span>
           <div className="flex items-center justify-center pt-2 pb-2">
             <>
-              <Image
+              {/* <Image
                 src={logo}
                 alt="Logo"
                 // fill
                 className="h-10 w-auto"
                 sizes="112px"
                 priority
-              />
+              /> */}
+              <h1 className="text-2xl font-bold">AI Chatbot</h1>
             </>
           </div>
           <p className="text-xs text-gray-500">
